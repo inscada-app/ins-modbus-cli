@@ -1,7 +1,7 @@
 # ins-modbus-cli
 A Modbus TCP/UDP Client
 
-![image](https://user-images.githubusercontent.com/1742454/210550120-78780da2-2e9a-4168-af73-1b7a3650db1a.png)
+![image](https://user-images.githubusercontent.com/1742454/210550903-bcbe8f98-89d4-4239-a13f-9600a592f16b.png)
 
 ![image](https://user-images.githubusercontent.com/1742454/210550488-76e60666-68df-46ab-9da0-4b81ea6453ec.png)
 
