@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="175.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="48.0" prefWidth="500.0" spacing="15.0">
+         <children>
+            <ImageView fx:id="imageView" fitHeight="114.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin></ImageView>
+            <VBox prefHeight="63.0" prefWidth="517.0">
+               <children>
+                  <Label prefHeight="25.0" prefWidth="315.0" text="inSCADA Modbus Client " />
+                  <Label layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="315.0" text="Version 1.0" />
+                  <Label layoutX="10.0" layoutY="34.0" prefHeight="25.0" prefWidth="315.0" text="Release Date : 2022/08/29" />
+                  <Hyperlink fx:id="hyperLinkInScada" layoutX="10.0" layoutY="78.0" text="https://www.inscada.com/" />
+                  <Label prefHeight="20.0" text="Used Libraries :">
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding></Label>
+                  <Hyperlink fx:id="hyperLinkIcon" text="https://icons8.com" />
+                  <Hyperlink fx:id="hyperLinkJ2Mod" text="https://github.com/steveohara/j2mod" />
+               </children>
+            </VBox>
+         </children>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>

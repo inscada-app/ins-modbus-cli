@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="720.0" prefWidth="1200.0" spacing="5.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.inscada.modbus.client.controllers.MainController">
+    <children>
+        <MenuBar>
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem fx:id="menuItemLoad" mnemonicParsing="false" onAction="#onLoadAction" text="Load Config" />
+                        <MenuItem fx:id="menuItemSave" mnemonicParsing="false" onAction="#onSaveAction" text="Save Config" />
+                        <MenuItem fx:id="menuItemExit" mnemonicParsing="false" onAction="#onExitAction" text="Exit Application" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Commands">
+                    <items>
+                  <MenuItem fx:id="menuItemClearLogs" mnemonicParsing="false" onAction="#onClearLogsClick" text="Clear Logs" />
+                        <MenuItem fx:id="menuItemReset" mnemonicParsing="false" onAction="#onResetCountersClick" text="Reset Counters" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Functions">
+                    <items>
+                        <MenuItem fx:id="menuItemFunctionInputs" mnemonicParsing="false" onAction="#onMenuItemFunctionInputsClick" text="Coils / Discrete Inputs" />
+                        <MenuItem fx:id="menuItemFunctionRegisters" mnemonicParsing="false" onAction="#onMenuItemFunctionRegistersClick" text="Holding / Input Registers" />
+                        <MenuItem fx:id="menuItemFunctionMaskWrite" mnemonicParsing="false" onAction="#onMenuItemFunctionMaskWriteClick" text="Mask Write Register" />
+                        <MenuItem fx:id="menuItemFunctionReadWrite" mnemonicParsing="false" onAction="#onMenuItemFunctionReadWriteClick" text="Read / Write Registers" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem fx:id="menuItemDocumentation" mnemonicParsing="false" onAction="#onMenuItemDocumentationClick" text="Documentation" />
+                        <MenuItem fx:id="menuItemModbusManual" mnemonicParsing="false" onAction="#onMenuItemModbusManualClick" text="Modbus Manual" />
+                        <MenuItem fx:id="menuItemAbout" mnemonicParsing="false" onAction="#onMenuItemAboutCLick" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <TitledPane collapsible="false" prefHeight="100.0" prefWidth="1206.0" text="Connection" VBox.vgrow="ALWAYS">
+            <content>
+                <HBox spacing="15.0">
+                    <children>
+                        <VBox prefHeight="80.0" prefWidth="115.0" spacing="20.0">
+                            <children>
+                                <Label text="Ip Address" />
+                                <Label text="Port" />
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                        </VBox>
+                        <VBox prefWidth="150.0" spacing="10.0">
+                            <children>
+                                <TextField id="txtFieldIPAdd" fx:id="txtFieldIpAddr" prefHeight="25.0" prefWidth="160.0" />
+                                <TextField id="txtFieldPort" fx:id="txtFieldPort" prefHeight="25.0" prefWidth="160.0" />
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                        </VBox>
+                        <VBox prefHeight="80.0" prefWidth="130.0" spacing="20.0">
+                            <children>
+                                <Label text="Unit Address" />
+                                <Label text="Timeout (Ms)" />
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                        </VBox>
+                        <VBox prefWidth="130.0" spacing="10.0">
+                            <children>
+                                <TextField id="txtFieldUnitAdd" fx:id="txtFieldUnitAdd" prefHeight="25.0" prefWidth="160.0" />
+                                <TextField id="txtFieldTimeout" fx:id="txtFieldTimeout" prefHeight="25.0" prefWidth="160.0" />
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                        </VBox>
+                        <VBox layoutX="357.0" layoutY="20.0" prefHeight="80.0" prefWidth="145.0" spacing="20.0">
+                            <children>
+                                <Label text="Scan Time (Ms)" />
+                                <Label text="Connection Type" />
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                        </VBox>
+                        <VBox layoutX="468.0" layoutY="20.0" prefWidth="145.0" spacing="10.0">
+                            <children>
+                                <TextField id="txtFieldScanTime" fx:id="txtFieldScanTime" prefHeight="25.0" prefWidth="160.0" />
+                                <ComboBox fx:id="comboBoxConnType" prefHeight="25.0" prefWidth="165.0" />
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                        </VBox>
+                        <VBox prefHeight="80.0" prefWidth="100.0" spacing="10.0">
+                            <children>
+                                <Button fx:id="btnStart" mnemonicParsing="false" onMouseClicked="#onStartButtonClick" prefHeight="25.0" prefWidth="130.0" text="Start" />
+                                <Button fx:id="btnStop" mnemonicParsing="false" onMouseClicked="#onStopButtonClick" prefHeight="25.0" prefWidth="130.0" text="Stop" />
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="958.0" layoutY="20.0" prefHeight="80.0" prefWidth="110.0" spacing="10.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </padding>
+                            <children>
+                                <Text fx:id="textConnStatus" strokeType="OUTSIDE" strokeWidth="0.0" text="No Connection" />
+                                <Circle fx:id="iconConnStatus" fill="DODGERBLUE" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="80.0" prefWidth="118.0" spacing="5.0">
+                            <children>
+                                <Label text="Success Count :" />
+                                <Label prefHeight="17.0" prefWidth="94.0" text="Error Count :" textFill="RED" />
+                            </children>
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                        </VBox>
+                        <VBox prefHeight="65.0" prefWidth="66.0" spacing="5.0">
+                            <children>
+                                <Label fx:id="labelSuccessCount" text="null" />
+                                <Label fx:id="labelErrorCount" text="null" textFill="RED" />
+                            </children>
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                        </VBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </HBox>
+            </content>
+        </TitledPane>
+        <AnchorPane prefHeight="293.0" prefWidth="1216.0" VBox.vgrow="ALWAYS">
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+            <children>
+                <TitledPane collapsible="false" prefHeight="533.0" prefWidth="1216.0" text="Data Block / Tags" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <content>
+                        <SplitPane dividerPositions="0.4868204283360791">
+                            <items>
+                                <VBox>
+                                    <children>
+                                        <HBox spacing="10.0">
+                                            <children>
+                                                <Label prefHeight="17.0" prefWidth="45.0" text="Search">
+                                                    <HBox.margin>
+                                                        <Insets top="4.0" />
+                                                    </HBox.margin>
+                                                </Label>
+                                                <TextField fx:id="txtFieldDBSearch" prefHeight="10.0" prefWidth="511.0" HBox.hgrow="ALWAYS">
+                                                    <HBox.margin>
+                                                        <Insets bottom="2.0" right="5.0" top="2.0" />
+                                                    </HBox.margin>
+                                                </TextField>
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets left="10.0" />
+                                            </VBox.margin>
+                                            <padding>
+                                                <Insets bottom="2.0" left="10.0" top="2.0" />
+                                            </padding>
+                                        </HBox>
+                                        <TableView fx:id="tblViewDataBlock" VBox.vgrow="ALWAYS">
+                                            <columns>
+                                                <TableColumn fx:id="tblColumnDBName" minWidth="8.0" prefWidth="75.0" text="Name" />
+                                                <TableColumn fx:id="tblColumnDBType" minWidth="9.0" prefWidth="75.0" text="Type" />
+                                                <TableColumn fx:id="tblColumnDBStartAddress" maxWidth="3000.0" minWidth="0.0" prefWidth="100.0" style="-fx-alignment: CENTER" text="Start Address" />
+                                                <TableColumn fx:id="tblColumnDBAmount" maxWidth="3000.0" minWidth="0.0" prefWidth="100.0" style="-fx-alignment: CENTER" text="Amount" />
+                                            </columns>
+                                            <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                            </columnResizePolicy>
+                                            <VBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                            </VBox.margin>
+                                        </TableView>
+                                        <HBox prefHeight="76.0" prefWidth="591.0" spacing="12.0">
+                                            <children>
+                                                <VBox prefHeight="76.0" prefWidth="50.0" spacing="10.0">
+                                                    <children>
+                                                        <Label prefHeight="17.0" prefWidth="65.0" text="Name" />
+                                                        <Label text="Type" />
+                                                    </children>
+                                                    <padding>
+                                                        <Insets top="8.0" />
+                                                    </padding>
+                                                    <HBox.margin>
+                                                        <Insets />
+                                                    </HBox.margin>
+                                                </VBox>
+                                                <VBox layoutX="10.0" layoutY="10.0" prefHeight="76.0" prefWidth="110.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <TextField fx:id="txtFieldDBName" prefHeight="25.0" prefWidth="130.0" />
+                                                        <ComboBox fx:id="comboBoxDBType" prefWidth="300.0" VBox.vgrow="ALWAYS" />
+                                                    </children>
+                                                    <padding>
+                                                        <Insets top="5.0" />
+                                                    </padding>
+                                                </VBox>
+                                                <VBox layoutX="10.0" layoutY="10.0" prefHeight="66.0" prefWidth="95.0" spacing="10.0">
+                                                    <children>
+                                                        <Label prefHeight="17.0" prefWidth="149.0" text="Start Address" VBox.vgrow="ALWAYS" />
+                                                        <Label text="Amount" VBox.vgrow="ALWAYS" />
+                                                    </children>
+                                                    <padding>
+                                                        <Insets top="8.0" />
+                                                    </padding>
+                                                </VBox>
+                                                <VBox layoutX="85.0" layoutY="10.0" prefHeight="66.0" prefWidth="105.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <TextField fx:id="txtFieldDBStartAddress" VBox.vgrow="ALWAYS" />
+                                                        <TextField fx:id="txtFieldDBAmount" VBox.vgrow="ALWAYS" />
+                                                    </children>
+                                                    <padding>
+                                                        <Insets top="5.0" />
+                                                    </padding>
+                                                </VBox>
+                                                <VBox prefHeight="66.0" prefWidth="65.0" spacing="6.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Button fx:id="btnDataBlockAdd" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#onDataBlockAddButtonClick" prefHeight="25.0" prefWidth="300.0" text="Add" VBox.vgrow="ALWAYS">
+                                                            <padding>
+                                                                <Insets bottom="2.0" />
+                                                            </padding>
+                                                        </Button>
+                                                        <Button fx:id="btnDataBlockDelete" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#onDataBlockDeleteButtonClick" prefHeight="25.0" prefWidth="300.0" text="Delete" VBox.vgrow="ALWAYS" />
+                                                    </children>
+                                                    <padding>
+                                                        <Insets bottom="5.0" top="5.0" />
+                                                    </padding>
+                                                </VBox>
+                                                <VBox layoutX="464.0" layoutY="10.0" prefHeight="76.0" prefWidth="62.0" spacing="6.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Button fx:id="btnDataBlockUpdate" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#onDataBlockUpdateButtonClick" prefHeight="25.0" prefWidth="300.0" text="Update" VBox.vgrow="ALWAYS" />
+                                                        <Button fx:id="btnDataBlockClear" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#onDataBlockClearButtonClick" prefHeight="25.0" prefWidth="300.0" text="Clear" VBox.vgrow="ALWAYS" />
+                                                    </children>
+                                                    <padding>
+                                                        <Insets bottom="5.0" top="5.0" />
+                                                    </padding>
+                                                    <HBox.margin>
+                                                        <Insets right="5.0" />
+                                                    </HBox.margin>
+                                                </VBox>
+                                            </children>
+                                            <padding>
+                                                <Insets left="6.0" />
+                                            </padding>
+                                            <VBox.margin>
+                                                <Insets left="10.0" />
+                                            </VBox.margin>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                                <VBox>
+                                    <children>
+                                        <HBox spacing="10.0">
+                                            <children>
+                                                <Label prefHeight="17.0" prefWidth="45.0" text="Search">
+                                                    <HBox.margin>
+                                                        <Insets top="4.0" />
+                                                    </HBox.margin>
+                                                </Label>
+                                                <TextField fx:id="txtFieldTagSearch" prefHeight="10.0" prefWidth="511.0" HBox.hgrow="ALWAYS">
+                                                    <HBox.margin>
+                                                        <Insets bottom="2.0" right="5.0" top="2.0" />
+                                                    </HBox.margin>
+                                                </TextField>
+                                            </children>
+                                            <padding>
+                                                <Insets bottom="2.0" left="10.0" top="2.0" />
+                                            </padding>
+                                        </HBox>
+                                        <TableView fx:id="tblViewTags" prefHeight="346.0" prefWidth="646.0" VBox.vgrow="ALWAYS">
+                                            <columns>
+                                                <TableColumn fx:id="tblColumnTagDBName" maxWidth="4500.0" minWidth="25.0" prefWidth="75.0" text="Data Block" />
+                                                <TableColumn fx:id="tblColumnTagName" minWidth="25.0" prefWidth="75.0" text="Name" />
+                                                <TableColumn fx:id="tblColumnTagType" maxWidth="4800.0" minWidth="0.0" prefWidth="75.0" text="Type" />
+                                                <TableColumn fx:id="tblColumnTagAddress" maxWidth="4000.0" prefWidth="75.0" style="-fx-alignment:CENTER " text="Address" />
+                                                <TableColumn fx:id="tblColumnTagValue" prefWidth="76.0" style="-fx-alignment: CENTER; -fx-font-weight: bold" text="Value" />
+                                                <TableColumn fx:id="tblColumnTagDate" minWidth="80.0" prefWidth="91.0" style="-fx-alignment: CENTER; -fx-font-weight: bold" text="Date" />
+                                                <TableColumn fx:id="tblColumnTagByteSwap" maxWidth="6000.0" minWidth="0.0" prefWidth="83.0" style="-fx-alignment: CENTER" text="Byte Swap" />
+                                                <TableColumn fx:id="tblColumnTagWordSwap" maxWidth="7000.0" minWidth="0.0" prefWidth="62.0" style="-fx-alignment: CENTER" text="Word Swap" />
+                                            </columns>
+                                            <VBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                            </VBox.margin>
+                                            <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                            </columnResizePolicy>
+                                        </TableView>
+                                        <HBox prefHeight="69.0" prefWidth="591.0" spacing="10.0">
+                                            <children>
+                                                <VBox prefHeight="100.0" prefWidth="50.0" spacing="10.0">
+                                                    <children>
+                                                        <Label text="Name" />
+                                                        <Label text="Type" />
+                                                    </children>
+                                                    <padding>
+                                                        <Insets top="8.0" />
+                                                    </padding>
+                                                    <HBox.margin>
+                                                        <Insets bottom="10.0" />
+                                                    </HBox.margin>
+                                                </VBox>
+                                                <VBox prefHeight="76.0" prefWidth="149.0" spacing="5.0">
+                                                    <children>
+                                                        <TextField fx:id="txtFieldTagName" prefWidth="150.0" VBox.vgrow="ALWAYS" />
+                                                        <ComboBox fx:id="comboBoxTagType" prefWidth="500.0" VBox.vgrow="ALWAYS" />
+                                                    </children>
+                                                    <padding>
+                                                        <Insets top="5.0" />
+                                                    </padding>
+                                                </VBox>
+                                                <VBox layoutX="10.0" layoutY="10.0" prefHeight="67.0" prefWidth="100.0" spacing="10.0">
+                                                    <children>
+                                                        <Label text="Address" />
+                                                        <CheckBox fx:id="checkBoxByteSwap" mnemonicParsing="false" text="Byte Swap" VBox.vgrow="ALWAYS">
+                                                            <padding>
+                                                                <Insets bottom="5.0" />
+                                                            </padding>
+                                                            <VBox.margin>
+                                                                <Insets bottom="10.0" />
+                                                            </VBox.margin>
+                                                        </CheckBox>
+                                                    </children>
+                                                    <padding>
+                                                        <Insets top="8.0" />
+                                                    </padding>
+                                                </VBox>
+                                                <VBox layoutX="80.0" layoutY="10.0" prefHeight="76.0" prefWidth="125.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <TextField fx:id="txtFieldTagAddress" VBox.vgrow="ALWAYS" />
+                                                        <CheckBox fx:id="checkBoxWordSwap" mnemonicParsing="false" text="Word Swap" VBox.vgrow="ALWAYS">
+                                                            <padding>
+                                                                <Insets bottom="5.0" />
+                                                            </padding>
+                                                            <VBox.margin>
+                                                                <Insets bottom="10.0" />
+                                                            </VBox.margin>
+                                                        </CheckBox>
+                                                    </children>
+                                                    <padding>
+                                                        <Insets right="5.0" top="5.0" />
+                                                    </padding>
+                                                </VBox>
+                                                <VBox prefHeight="76.0" prefWidth="59.0" spacing="6.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Button fx:id="btnTagAdd" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#onTagAddButtonClick" prefHeight="25.0" prefWidth="300.0" text="Add" VBox.vgrow="ALWAYS">
+                                                            <padding>
+                                                                <Insets bottom="2.0" />
+                                                            </padding>
+                                                        </Button>
+                                                        <Button fx:id="btnTagDelete" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#onTagDeleteButtonClick" prefHeight="25.0" prefWidth="300.0" text="Delete" VBox.vgrow="ALWAYS" />
+                                                    </children>
+                                                    <padding>
+                                                        <Insets bottom="5.0" top="5.0" />
+                                                    </padding>
+                                                </VBox>
+                                                <VBox prefHeight="76.0" prefWidth="59.0" spacing="6.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Button fx:id="btnTagUpdate" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#onTagUpdateButtonClick" prefHeight="25.0" prefWidth="300.0" text="Update" VBox.vgrow="ALWAYS" />
+                                                        <Button fx:id="btnTagClear" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#onTagClearButtonClick" prefHeight="25.0" prefWidth="300.0" text="Clear" VBox.vgrow="ALWAYS" />
+                                                    </children>
+                                                    <padding>
+                                                        <Insets bottom="5.0" top="5.0" />
+                                                    </padding>
+                                                </VBox>
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets left="10.0" />
+                                            </VBox.margin>
+                                            <padding>
+                                                <Insets left="6.0" right="6.0" />
+                                            </padding>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </items>
+                        </SplitPane>
+                    </content>
+                </TitledPane>
+            </children>
+        </AnchorPane>
+        <TitledPane animated="false" collapsible="false" prefHeight="287.0" prefWidth="1216.0" text="Logs" VBox.vgrow="ALWAYS">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="268.0" prefWidth="1214.0">
+                    <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                    <children>
+                                        <Label layoutX="10.0" layoutY="10.0" prefHeight="21.0" prefWidth="90.0" text="Log Level" HBox.hgrow="ALWAYS">
+                                            <padding>
+                                                <Insets left="10.0" top="4.0" />
+                                            </padding>
+                                        </Label>
+                                        <ComboBox fx:id="comboBoxLogLevel" prefWidth="150.0">
+                                            <HBox.margin>
+                                                <Insets right="5.0" />
+                                            </HBox.margin>
+                                        </ComboBox>
+                                        <Label prefHeight="21.0" prefWidth="90.0" text="Search" HBox.hgrow="ALWAYS">
+                                            <padding>
+                                                <Insets left="25.0" top="4.0" />
+                                            </padding>
+                                        </Label>
+                                        <TextField fx:id="txtFieldLogSearch" prefHeight="25.0" prefWidth="530.0" HBox.hgrow="ALWAYS" />
+                                        <Button fx:id="btnExportLog" mnemonicParsing="false" onMouseClicked="#onExportButtonClick" prefHeight="25.0" prefWidth="181.0" text="Export" HBox.hgrow="ALWAYS" />
+                                    </children>
+                                    <padding>
+                                        <Insets right="5.0" />
+                                    </padding>
+                                </HBox>
+                                <ListView fx:id="listViewLog" prefHeight="309.0" prefWidth="1195.0" VBox.vgrow="ALWAYS" />
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+            </content>
+        </TitledPane>
+    </children>
+    <padding>
+        <Insets bottom="5.0" top="5.0" />
+    </padding>
+</VBox>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
+         <children>
+            <HBox prefHeight="465.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label alignment="TOP_CENTER" prefHeight="35.0" prefWidth="150.0" text="Write Address" />
+                        <Label alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="150.0" text="Write Quantity" />
+                        <Label alignment="TOP_CENTER" layoutX="10.0" layoutY="27.0" prefHeight="35.0" prefWidth="150.0" text="Type" />
+                     </children>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TextField fx:id="txtFieldWriteAddress" prefHeight="20.0" prefWidth="150.0" />
+                        <TextField fx:id="txtFieldWriteQuantity" prefHeight="20.0" prefWidth="150.0" />
+                        <ComboBox fx:id="comboBoxWriteType" prefHeight="20.0" prefWidth="150.0" />
+                     </children>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="388.0" prefWidth="295.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="150.0" text="Read Address" />
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="150.0" text="Read Quantity" />
+                        <Label alignment="CENTER" layoutX="10.0" layoutY="40.0" prefHeight="30.0" prefWidth="150.0" text="Type" />
+                     </children>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TextField fx:id="txtFieldReadAddress" prefHeight="10.0" prefWidth="150.0" />
+                        <TextField fx:id="txtFieldReadQuantity" prefHeight="10.0" prefWidth="150.0" />
+                        <ComboBox fx:id="comboBoxReadType" prefWidth="150.0" />
+                     </children>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+            <Button fx:id="btnExecute" alignment="CENTER" mnemonicParsing="false" text="Execute" />
+            <Label fx:id="lblStatus" text="Label">
+               <font>
+                  <Font size="11.0" />
+               </font></Label>
+         </children>
+         <HBox.margin>
+            <Insets bottom="20.0" />
+         </HBox.margin>
+      </VBox>
+      <VBox prefHeight="200.0" prefWidth="95.0" spacing="10.0" HBox.hgrow="ALWAYS">
+         <children>
+            <TableView fx:id="tblViewWrite" prefHeight="200.0" prefWidth="350.0" VBox.vgrow="ALWAYS">
+              <columns>
+                <TableColumn fx:id="tblColumnWriteAddress" prefWidth="172.0" text="Address" />
+                <TableColumn fx:id="tblColumnWriteValue" prefWidth="172.0" text="Value" />
+              </columns>
+            </TableView>
+            <Label text="Read Result" />
+            <TableView fx:id="tblViewRead" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+              <columns>
+                <TableColumn fx:id="tblColumnReadAddress" prefWidth="172.0" text="Address" />
+                <TableColumn fx:id="tblColumnReadValue" prefWidth="172.0" text="Value" />
+              </columns>
+            </TableView>
+         </children>
+         <HBox.margin>
+            <Insets bottom="7.0" left="5.0" right="5.0" top="7.0" />
+         </HBox.margin>
+      </VBox>
+   </children>
+</HBox>

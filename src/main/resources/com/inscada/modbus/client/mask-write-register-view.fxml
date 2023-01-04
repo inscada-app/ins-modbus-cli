@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_CENTER" prefHeight="145.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="145.0" prefWidth="450.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox alignment="TOP_RIGHT" prefHeight="228.0" prefWidth="0.0" spacing="7.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label alignment="TOP_CENTER" prefHeight="30.0" prefWidth="150.0" text="Address" />
+                  <Label alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="150.0" text="AND Mask" />
+                  <Label alignment="TOP_CENTER" layoutX="10.0" layoutY="27.0" prefHeight="30.0" prefWidth="150.0" text="OR Mask" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <TextField fx:id="txtFieldAddress">
+                     <VBox.margin>
+                        <Insets right="15.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtFieldAndMask" layoutX="10.0" layoutY="10.0">
+                     <VBox.margin>
+                        <Insets right="15.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtFieldOrMask" layoutX="10.0" layoutY="35.0">
+                     <VBox.margin>
+                        <Insets right="15.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </VBox>
+         </children>
+         <padding>
+            <Insets top="20.0" />
+         </padding>
+      </HBox>
+      <Button fx:id="btnExecute" mnemonicParsing="false" prefHeight="31.0" prefWidth="200.0" text="Execute">
+         <VBox.margin>
+            <Insets bottom="15.0" />
+         </VBox.margin>
+      </Button>
+      <Label fx:id="lblStatus" text="Label">
+         <VBox.margin>
+            <Insets bottom="15.0" />
+         </VBox.margin>
+      </Label>
+   </children>
+</VBox>
