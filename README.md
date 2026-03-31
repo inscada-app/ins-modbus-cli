@@ -94,6 +94,10 @@ Every Data Block has its own Tags. You must define a Data Block before you add a
  
 ![chart](docs/images/chart.png)
 
+![tag-chart](docs/images/tag-chart1.avif)
+
+![tag-chart-single](docs/images/tag-chart-single.avif)
+
 ---
 
 ### 2.3 Using Functions
